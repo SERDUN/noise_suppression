@@ -46,12 +46,13 @@ cd example/ios && xcodebuild test -workspace Runner.xcworkspace -scheme Runner \
 
 Last run on devices (2026-11-03, `flutter test integration_test`, debug build):
 
-| Device | Android | Attenuation | Mean time per 10 ms frame |
+| Device | OS | Attenuation | Mean time per 10 ms frame |
 |---|---|---|---|
-| Samsung SM-T505 | 12 | 15.1 dB | 377 us |
-| Xiaomi 25028RN03Y | 15 (Go) | 15.1 dB | 324 us |
+| Samsung SM-T505 | Android 12 | 15.1 dB | 377 us |
+| Xiaomi 25028RN03Y | Android 15 (Go) | 15.1 dB | 324 us |
+| iPhone 12 mini | iOS 27 | 15.1 dB | 577 us |
 
-iOS: RunnerTests passed on the iPhone 17e simulator; not run on a phone yet. CocoaPods path not built yet.
+On an iPhone the example needs `DEVELOPMENT_TEAM` of a team that has a profile for its bundle id (a wildcard one will do); the committed team is the one `flutter create` picked. The iOS build went through Swift Package Manager; the CocoaPods path is not built yet.
 
 ## Traps
 
