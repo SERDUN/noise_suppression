@@ -1,5 +1,7 @@
 # noise_suppression
 
+> **Moved.** The suppressor now lives in [SERDUN/flutter_webrtc_noise_suppression](https://github.com/SERDUN/flutter_webrtc_noise_suppression) (since `43d0d4b`), behind the same interface, together with the flutter_webrtc add-on that uses it. This repository is archived.
+
 Experimental. Removes background noise from 10 ms frames of mono voice, behind the package's own interface. It does not depend on flutter_webrtc or any other audio stack: whoever owns the audio pipeline writes a small bridge from that pipeline to this interface.
 
 Engine: RNNoise v0.1.1 (xiph, `6cbfd53eb348a8d394e0757b4025c6ded34eb2b6`, BSD-3-Clause), the classic model: about 110-140 KB of native code per ABI, about 1 ms per frame on a low-end Android phone. It works at 48 kHz, mono, exactly 480 samples per frame, float samples on the int16 scale. A frame of any other shape is left unchanged and the call says so, so the caller can fall back to its own processing.
