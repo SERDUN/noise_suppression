@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = '0.0.1'
   s.summary          = 'Background noise suppression for 10 ms voice frames (RNNoise).'
   s.description      = 'A noise suppressor with its own interface, independent of any audio stack.'
-  s.homepage         = 'https://github.com/SERDUN/flutter-noise-suppression'
+  s.homepage         = 'https://github.com/SERDUN/noise_suppression'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Dmytro Serdun' => 'dmitriiserdun@gmail.com' }
   s.source           = { :path => '.' }
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   ]
   s.resource_bundles = { 'noise_suppression_privacy' => ['noise_suppression/Sources/noise_suppression/PrivacyInfo.xcprivacy'] }
   s.dependency 'Flutter'
-  s.platform = :ios, '13.0'
+  s.platform = :ios, '15.0'
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'HEADER_SEARCH_PATHS' => '"${PODS_TARGET_SRCROOT}/noise_suppression/Sources/NoiseSuppressionCore/include" "${PODS_TARGET_SRCROOT}/noise_suppression/Sources/NoiseSuppressionCore/rnnoise/include"',

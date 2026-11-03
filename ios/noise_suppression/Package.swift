@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "noise_suppression",
     platforms: [
-        .iOS("13.0")
+        .iOS("15.0")
     ],
     products: [
         // The plugin: NSPNoiseSuppressor, NSPRnnoiseSuppressor and the Flutter channel.
@@ -32,10 +32,10 @@ let package = Package(
                 .product(name: "FlutterFramework", package: "FlutterFramework"),
             ],
             path: "Sources/noise_suppression",
-            publicHeadersPath: "include/noise_suppression",
             resources: [
                 .process("PrivacyInfo.xcprivacy")
-            ]
+            ],
+            publicHeadersPath: "include/noise_suppression"
         ),
     ]
 )
