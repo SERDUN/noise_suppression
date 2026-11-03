@@ -44,11 +44,19 @@ cd example/ios && xcodebuild test -workspace Runner.xcworkspace -scheme Runner \
 
 `selfCheck` runs 3 s of white noise through a suppressor via its interface and reports the attenuation and the time per frame. It shows the engine runs on a device; it is not a measurement of call quality.
 
+Last run on devices (2026-11-03, `flutter test integration_test`, debug build):
+
+| Device | Android | Attenuation | Mean time per 10 ms frame |
+|---|---|---|---|
+| Samsung SM-T505 | 12 | 15.1 dB | 377 us |
+| Xiaomi 25028RN03Y | 15 (Go) | 15.1 dB | 324 us |
+
+iOS: RunnerTests passed on the iPhone 17e simulator; not run on a phone yet. CocoaPods path not built yet.
+
 ## Traps
 
 - Clone it into a directory named `noise_suppression`. With Swift Package Manager, Xcode takes a local package's identity from the directory name and refuses the plugin when the two differ (`unable to override package 'noise_suppression' because its identity ... doesn't match`).
 - iOS 15.0 is the lowest target: Xcode 27 accepts nothing older.
-
 - RNNoise keeps its FFT state in a global named `common`; every build defines `common=ns_rnnoise_common` so it cannot collide with another library in the process.
 - RNNoise builds its FFT tables with `malloc` on the first frame; `ns_create` runs one frame of silence so that happens off the audio thread.
 - `rnnoise_init` on a live state leaks its GRU buffers; `ns_reset` replaces the state instead (it allocates, so not per frame).
